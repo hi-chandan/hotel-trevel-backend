@@ -26,7 +26,8 @@ function main() {
         const app = (0, express_1.default)();
         app.use(express_1.default.urlencoded({ extended: true }));
         app.use((0, cors_1.default)({
-            origin: "http://localhost:4000" || "http://localhost:5173",
+            origin: "http://localhost:4000" ||
+                "https://travel-and-stay-booking-app.vercel.app/",
             methods: ["GET", "POST", "PUT", "DELETE"],
             credentials: true,
         }));
