@@ -17,7 +17,7 @@ userRouter.post(
   validate.body(loginInput),
   wrapper(userControl.login.bind(userControl)),
 );
-userRouter.post(
+userRouter.get(
   "/logout",
   isAuth,
   wrapper(userControl.logout.bind(userControl)),
