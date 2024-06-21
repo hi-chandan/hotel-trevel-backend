@@ -13,9 +13,7 @@ async function main() {
   app.use(express.urlencoded({ extended: true }));
   app.use(
     cors({
-      origin:
-        "http://localhost:4000" ||
-        "https://travel-and-stay-booking-app.vercel.app/",
+      origin: "https://travel-and-stay-booking-app.vercel.app/",
       methods: ["GET", "POST", "PUT", "DELETE"],
       credentials: true,
     }),
