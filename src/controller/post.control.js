@@ -20,12 +20,10 @@ class PostControl {
     addPost(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             var _a;
-            console.log("This si file", req.file);
             const userId = req.user.id;
             const image = (_a = req.file) === null || _a === void 0 ? void 0 : _a.path;
             req.body.image = image;
             post_schama_1.imgInput.parse(req.body);
-            console.log("This is image path", req.body);
             const postData = {
                 title: req.body.title,
                 price: req.body.price,
@@ -47,8 +45,6 @@ class PostControl {
                 bus: req.body.bus,
                 restaurant: req.body.restaurant,
             };
-            console.log("This is postDetails", postData);
-            console.log("This is postDetails", postDetail);
             const post = yield this.postService.addPost(postData, postDetail, userId, image);
             return httpres_1.HttpRes.create(post, "post is created");
         });
@@ -63,7 +59,6 @@ class PostControl {
     getPosts(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const posts = yield this.postService.getPosts(req.query);
-            console.log("this is file", req.file);
             return httpres_1.HttpRes.ok(posts, "all posts");
         });
     }
@@ -78,7 +73,6 @@ class PostControl {
     }
     deletePost(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log("Wrokking properly", req.params.id);
             const userId = req.user.id;
             const postId = req.params.id;
             const deletePost = yield this.postService.deletePost(userId, postId);

@@ -10,7 +10,6 @@ class UserControl {
 
   async Create(req: Request, res: Response) {
     const data = req.body;
-    console.log(data);
     const user = await this.userService.Signup(data);
     tokenservice(user, res);
 

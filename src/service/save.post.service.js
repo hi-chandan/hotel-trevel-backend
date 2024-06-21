@@ -40,7 +40,6 @@ class SavePost {
             const check = yield this.saveModel.findUnique({
                 where: { userId: userId, id: postId },
             });
-            console.log("This si wroking properly", check);
             if (!check) {
                 throw new httperrors_1.BadRequest("SavePost not found", 400);
             }

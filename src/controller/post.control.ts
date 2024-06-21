@@ -7,14 +7,12 @@ export class PostControl {
   constructor(private postService: PostService) {}
 
   async addPost(req: Request, res: Response) {
-    console.log("This si file", req.file);
     const userId = req.user.id;
 
     const image = req.file?.path as string;
     req.body.image = image;
     imgInput.parse(req.body);
 
-    console.log("This is image path", req.body);
     const postData = {
       title: req.body.title,
       price: req.body.price,
@@ -37,8 +35,7 @@ export class PostControl {
       bus: req.body.bus,
       restaurant: req.body.restaurant,
     };
-    console.log("This is postDetails", postData);
-    console.log("This is postDetails", postDetail);
+
 
     const post = await this.postService.addPost(
       postData,
@@ -57,7 +54,6 @@ export class PostControl {
   }
   async getPosts(req: Request, res: Response) {
     const posts = await this.postService.getPosts(req.query);
-    console.log("this is file", req.file);
 
     return HttpRes.ok(posts, "all posts");
   }
@@ -70,7 +66,6 @@ export class PostControl {
     return HttpRes.ok(update, "update is complete");
   }
   async deletePost(req: Request, res: Response) {
-    console.log("Wrokking properly", req.params.id);
     const userId = req.user.id;
     const postId = req.params.id;
     const deletePost = await this.postService.deletePost(userId, postId);

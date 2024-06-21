@@ -28,7 +28,6 @@ class PostService {
                 folder: "check/estateApp",
             });
             postData.userId = userId;
-            console.log("This is result", result);
             const post = yield this.postModel.create({
                 data: Object.assign(Object.assign({}, postData), { image: {
                         publicId: result.public_id,
@@ -37,7 +36,6 @@ class PostService {
                         create: postDetail,
                     } }),
             });
-            console.log("This is post", post);
             return post;
         });
     }
@@ -119,7 +117,6 @@ class PostService {
             if (check.length == 0) {
                 throw new httperrors_1.BadRequest("can't Delete different User post", 400);
             }
-            console.log("This si check", check);
             yield this.DetailModel.deleteMany({ where: { postId: postId } });
             const saveDelete = yield this.saveModel.deleteMany({
                 where: { postId: postId },

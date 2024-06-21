@@ -20,7 +20,6 @@ class UserControl {
     Create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const data = req.body;
-            console.log(data);
             const user = yield this.userService.Signup(data);
             (0, token_service_1.tokenservice)(user, res);
             return httpres_1.HttpRes.ok(user, "user is Register");

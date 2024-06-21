@@ -16,7 +16,6 @@ export class PostService {
       folder: "check/estateApp",
     });
     postData.userId = userId;
-    console.log("This is result", result);
 
     const post = await this.postModel.create({
       data: {
@@ -30,7 +29,6 @@ export class PostService {
         },
       },
     });
-    console.log("This is post", post);
     return post;
   }
   async getPost(id: any) {
@@ -112,7 +110,6 @@ export class PostService {
       throw new BadRequest("can't Delete different User post", 400);
     }
 
-    console.log("This si check", check);
     await this.DetailModel.deleteMany({ where: { postId: postId } });
     const saveDelete = await this.saveModel.deleteMany({
       where: { postId: postId },
