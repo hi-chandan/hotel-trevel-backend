@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const wrapper_1 = require("../utils/wrapper");
+const save_post_control_1 = require("../controller/save.post.control");
+const verifytoken_1 = require("../middleware/verifytoken");
+const saveRouter = (0, express_1.Router)();
+saveRouter.post("/save/:id", verifytoken_1.isAuth, (0, wrapper_1.wrapper)(save_post_control_1.saveControl.savePost.bind(save_post_control_1.saveControl)));
+saveRouter.delete("/save/:id", verifytoken_1.isAuth, (0, wrapper_1.wrapper)(save_post_control_1.saveControl.deleteSavePost.bind(save_post_control_1.saveControl)));
+saveRouter.get("/saves", (0, wrapper_1.wrapper)(verifytoken_1.isAuth), (0, wrapper_1.wrapper)(save_post_control_1.saveControl.getSavePosts.bind(save_post_control_1.saveControl)));
+saveRouter.get("/saveslist", (0, wrapper_1.wrapper)(verifytoken_1.isAuth), (0, wrapper_1.wrapper)(save_post_control_1.saveControl.getListSave.bind(save_post_control_1.saveControl)));
+saveRouter.get("/save/:id", (0, wrapper_1.wrapper)(verifytoken_1.isAuth), (0, wrapper_1.wrapper)(save_post_control_1.saveControl.getSavePosts.bind(save_post_control_1.saveControl)));
+exports.default = saveRouter;
